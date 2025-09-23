@@ -23,6 +23,9 @@
                         <x-nav-link :href="route('admin.loans.return.index')" :active="request()->routeIs('admin.loans.return.index')">
                             {{ __('Возврат книги') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('admin.settings.index')" :active="request()->routeIs('admin.settings.index')">
+                            {{ __('Настройки системы') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>

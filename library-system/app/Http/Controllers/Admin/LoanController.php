@@ -38,8 +38,9 @@ class LoanController extends Controller
         }
 
         // Ставим дату возврата, по умолчанию 14 дней
+        $loanPeriodDays = (int) \App\Models\Setting::get('loan_period_days', 14);
         $issuedAt = Carbon::parse($validatedData['issued_at']);
-        $dueAt = $issuedAt->copy()->addDays(14);
+        $dueAt = $issuedAt->copy()->addDays($loanPeriodDays);
 
         // создание записи выдачи
         $loan = Loan::create([
@@ -82,7 +83,7 @@ class LoanController extends Controller
         $fineAmount = 0;
         if ($loan->due_at->isPast()) {
             $daysOverdue = $loan->due_at->diffInDays($returnedAt);
-            $fineRate = 10;
+            $fineRate = (float) \App\Models\Setting::get('fine_rate_per_day', 10);
             $fineAmount = $daysOverdue * $fineRate;
         }
         $loan->fine_amount = $fineAmount;

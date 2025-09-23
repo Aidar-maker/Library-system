@@ -8,6 +8,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\admin\SettingController;
 
 // Главная страница
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -69,5 +70,9 @@ Route::middleware(['auth'])->group(function () {
         //Возврат книг
         Route::get('/loans/return', [LoanController::class, 'returnIndex'])->name('loans.return.index');
         Route::post('/loans/return/{loan}', [LoanController::class, 'returnBook'])->name('loans.return');
+    
+        //Настройки системы
+        Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+        Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
     });
 });
