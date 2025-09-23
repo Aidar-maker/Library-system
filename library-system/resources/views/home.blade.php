@@ -28,8 +28,6 @@
                     @else
                         <div class="mt-4">
                             <a href="{{ route('books.index') }}" class="btn btn-outline-info">Каталог книг</a>
-                            <a href="{{ route('profile.index') }}" class="btn btn-outline-success">Личный кабинет</a>
-                        </div>
                     @endguest
                 </div>
             </div>
