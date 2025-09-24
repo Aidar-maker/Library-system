@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Главная') }}
                     </x-nav-link>
-                    <!-- Админ-панель (только для администраторов) -->
+                    <!-- Админ-ссылки -->
                     @if(Auth::check() && Auth::user()->is_admin)
                         <x-nav-link :href="route('admin.loans.create')" :active="request()->routeIs('admin.loans.create')">
                             {{ __('Выдача книги') }}

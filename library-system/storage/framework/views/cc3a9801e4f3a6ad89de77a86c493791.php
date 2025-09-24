@@ -7,9 +7,40 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Каталог книг</span>
-                    <form action="<?php echo e(route('books.index')); ?>" method="GET" class="d-flex">
-                        <input type="text" name="search" class="form-control form-control-sm me-2" placeholder="Поиск по названию или автору..." value="<?php echo e(request('search')); ?>">
-                        <button class="btn btn-outline-secondary btn-sm" type="submit">Найти</button>
+                    <!-- Форма фильтрации -->
+                    <form action="<?php echo e(route('books.index')); ?>" method="GET" class="d-flex flex-wrap gap-2">
+                        <!-- Поиск -->
+                        <div class="input-group input-group-sm">
+                            <input type="text" name="search" class="form-control form-control-sm" placeholder="Поиск..." value="<?php echo e(request('search')); ?>">
+                        </div>
+
+                        <!-- Фильтр по жанру -->
+                        <select name="genre" class="form-select form-select-sm">
+                            <option value="">Все жанры</option>
+                            <?php $__currentLoopData = $genres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genreOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($genreOption); ?>" <?php echo e(request('genre') == $genreOption ? 'selected' : ''); ?>>
+                                    <?php echo e($genreOption); ?>
+
+                                </option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+
+                        <!-- Фильтр по статусу -->
+                        <select name="status" class="form-select form-select-sm">
+                            <option value="">Все статусы</option>
+                            <option value="available" <?php echo e(request('status') == 'available' ? 'selected' : ''); ?>>Доступна</option>
+                            <option value="not_available" <?php echo e(request('status') == 'not_available' ? 'selected' : ''); ?>>Занята</option>
+                        </select>
+
+                        <!-- Фильтр по году "от" -->
+                        <input type="number" name="year_from" class="form-control form-control-sm" placeholder="Год от" min="1000" max="<?php echo e(date('Y')); ?>" value="<?php echo e(request('year_from')); ?>" style="width: 100px;">
+
+                        <!-- Фильтр по году "до" -->
+                        <input type="number" name="year_to" class="form-control form-control-sm" placeholder="Год до" min="1000" max="<?php echo e(date('Y')); ?>" value="<?php echo e(request('year_to')); ?>" style="width: 100px;">
+
+                        <button class="btn btn-outline-secondary btn-sm" type="submit">Применить</button>
+                        <!-- Кнопка сброса фильтров -->
+                        <a href="<?php echo e(route('books.index')); ?>" class="btn btn-outline-warning btn-sm">Сбросить</a>
                     </form>
                 </div>
 

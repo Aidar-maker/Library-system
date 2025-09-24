@@ -16,7 +16,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Маршруты для аутентификации
 require __DIR__.'/auth.php';
 
-// Группа маршрутов, доступных только аутентифицированным пользователям
+// Маршруты для авторизованных
 Route::middleware(['auth'])->group(function () {
     // Личный кабинет читателя
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');

@@ -19,7 +19,7 @@
                         <li class="list-group-item"><strong>Email:</strong> <?php echo e($user->email); ?></li>
                         <!-- Если в будущем добавятся телефон и адрес, их можно будет сюда добавить -->
                     </ul>
-
+                    <a href="<?php echo e(route('profile.edit')); ?>" class="btn btn-outline-success">Редактирование профиля</a>
                     <h4>Мои штрафы</h4>
                     <p>Общая сумма штрафов: <strong><?php echo e(number_format($totalFine, 2, ',', ' ')); ?> руб.</strong></p>
 

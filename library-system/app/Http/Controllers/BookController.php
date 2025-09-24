@@ -12,7 +12,7 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Book::where('is_available', true);
+        $query = Book::query();
 
         if ($request->has('search') && $search = $request->input('search')) {
             $query->where(function($q) use ($search) {
@@ -21,9 +21,26 @@ class BookController extends Controller
             });
         }
 
+        //фильтр по жанру
+        if ($request->has("genre") && $genre = $request->input("genre")) {
+            $query->where('genre', $genre);
+        }
 
-        $books = Book::paginate(10);
-        return view('books.index', compact('books'));
+        // Фильтр по году (от и до)
+        if ($request->has('year_from') && $yearFrom = $request->input('year_from')) {
+            $query->where('year', '>=', (int)$yearFrom);
+        }
+        if ($request->has('year_to') && $yearTo = $request->input('year_to')) {
+            $query->where('year', '<=', (int)$yearTo);
+        }
+
+        // Выполняем запрос с пагинацией
+        $books = $query->paginate(10)->appends($request->query());
+
+        // Получаем уникальные жанры для выпадающего списка фильтра
+        $genres = Book::select('genre')->distinct()->orderBy('genre')->pluck('genre');
+
+        return view('books.index', compact('books', 'genres'));
     }
 
     /**

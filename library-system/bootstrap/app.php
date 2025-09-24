@@ -10,6 +10,13 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
+    ->withCommands([
+
+    ])
+    ->withSchedule(function ($schedule) {
+        //Ежедневная проверка
+        $schedule->command('loans:check-overdue')->dailyAt('00:00');
+    })
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,

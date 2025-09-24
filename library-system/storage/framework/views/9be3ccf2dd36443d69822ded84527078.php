@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Возврат книги</span>
+                    <a href="<?php echo e(route('admin.dashboard')); ?>" class="btn btn-secondary btn-sm">Назад</a>
                 </div>
 
                 <div class="card-body">
@@ -42,15 +43,17 @@
                                 <tbody>
                                     <?php $__currentLoopData = $activeLoans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $loan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
-                                            <td><?php echo e($loan->user->name); ?></td>
-                                            <td><?php echo e($loan->book->title); ?></td>
-                                            <td><?php echo e($loan->issued_at->format('d.m.Y')); ?></td>
-                                            <td><?php echo e($loan->due_at->format('d.m.Y')); ?></td>
+                                            <td><?php echo e($loan->user->name ?? 'Неизвестный'); ?></td>
+                                            <td><?php echo e($loan->book->title ?? 'Неизвестная'); ?></td>
+                                            <td><?php echo e($loan->issued_at->format('d.m.Y') ?? 'Неизвестно'); ?></td>
+                                            <td><?php echo e($loan->due_at->format('d.m.Y') ?? 'Неизвестно'); ?></td>
                                             <td>
-                                                <?php if($loan->due_at->isPast()): ?>
+                                                <?php if($loan->due_at && $loan->due_at->isPast()): ?>
                                                     <span class="text-danger"><?php echo e($loan->due_at->diffInDays(now())); ?> дней просрочки</span>
-                                                <?php else: ?>
+                                                <?php elseif($loan->due_at): ?>
                                                     <?php echo e($loan->due_at->diffInDays(now())); ?> дней
+                                                <?php else: ?>
+                                                    Неизвестно
                                                 <?php endif; ?>
                                             </td>
                                             <td>

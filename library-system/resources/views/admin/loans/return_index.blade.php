@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Возврат книги</span>
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary btn-sm">Назад</a>
                 </div>
 
                 <div class="card-body">
@@ -40,15 +41,17 @@
                                 <tbody>
                                     @foreach($activeLoans as $loan)
                                         <tr>
-                                            <td>{{ $loan->user->name }}</td>
-                                            <td>{{ $loan->book->title }}</td>
-                                            <td>{{ $loan->issued_at->format('d.m.Y') }}</td>
-                                            <td>{{ $loan->due_at->format('d.m.Y') }}</td>
+                                            <td>{{ $loan->user->name ?? 'Неизвестный' }}</td>
+                                            <td>{{ $loan->book->title ?? 'Неизвестная' }}</td>
+                                            <td>{{ $loan->issued_at->format('d.m.Y') ?? 'Неизвестно' }}</td>
+                                            <td>{{ $loan->due_at->format('d.m.Y') ?? 'Неизвестно' }}</td>
                                             <td>
-                                                @if($loan->due_at->isPast())
+                                                @if($loan->due_at && $loan->due_at->isPast())
                                                     <span class="text-danger">{{ $loan->due_at->diffInDays(now()) }} дней просрочки</span>
-                                                @else
+                                                @elseif($loan->due_at)
                                                     {{ $loan->due_at->diffInDays(now()) }} дней
+                                                @else
+                                                    Неизвестно
                                                 @endif
                                             </td>
                                             <td>
