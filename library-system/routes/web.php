@@ -1,14 +1,15 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\BookController;
 use App\Http\Controllers\Admin\LoanController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\Admin\BookController;
 
 // Главная страница
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -39,8 +40,9 @@ Route::middleware(['auth'])->group(function () {
         
         
         // Управление книгами (CRUD)
-        Route::resource('admin/books', BookController::class)->except(['show', 'index']);
-        
+        //Route::resource('books', BookController::class)->except(['show', 'index']);
+        Route::get('admin/books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
+        Route::put('admin/books/{book}', [BookController::class, 'update'])->name('books.update');
 
         // Отчеты
         Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');

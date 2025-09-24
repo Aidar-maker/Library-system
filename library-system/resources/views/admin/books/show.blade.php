@@ -28,9 +28,10 @@
                     </div>
 
                     <hr>
-
-                    <a href="{{ route('admin.books.edit', $book) }}" class="btn btn-warning">Редактировать</a>
-                    <a href="{{ route('admin.books.index') }}" class="btn btn-secondary">Назад</a>
+                    @if(Auth::check() && Auth::user()->is_admin)
+                        <a href="{{ route('admin.books.edit', $book) }}" class="btn btn-warning">Редактировать</a>
+                        <a href="{{ route('admin.books.index') }}" class="btn btn-secondary">Назад</a>
+                    @endif
                 </div>
             </div>
         </div>

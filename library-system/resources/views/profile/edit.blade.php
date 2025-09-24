@@ -22,6 +22,16 @@
                             <input type="email" name="email" id="email" class="form-control" value="{{ old('email', auth()->user()->email) }}" required>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Телефон</label>
+                            <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone', auth()->user()->phone) }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Адрес</label>
+                            <input type="text" name="address" id="address" class="form-control" value="{{ old('address', auth()->user()->address) }}">
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Обновить</button>
                     </form>
                 </div>
