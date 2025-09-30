@@ -4,38 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Services\BookService;
 
 class BookController extends Controller
 {
+    protected $bookService;
+
+    public function __construct(BookService $bookService)
+    {
+        $this->bookService = $bookService;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $query = Book::query();
-
-        if ($request->has('search') && $search = $request->input('search')) {
-            $query->where(function($q) use ($search) {
-                $q->where('title', 'like', "%{$search}%")
-                ->orWhere('author', 'like', "%{$search}%");
-            });
-        }
-
-        //фильтр по жанру
-        if ($request->has("genre") && $genre = $request->input("genre")) {
-            $query->where('genre', $genre);
-        }
-
-        // Фильтр по году (от и до)
-        if ($request->has('year_from') && $yearFrom = $request->input('year_from')) {
-            $query->where('year', '>=', (int)$yearFrom);
-        }
-        if ($request->has('year_to') && $yearTo = $request->input('year_to')) {
-            $query->where('year', '<=', (int)$yearTo);
-        }
-
-        // Выполняем запрос с пагинацией
-        $books = $query->paginate(10)->appends($request->query());
+        $books = $this->bookService->getFilteredBooks($request);
 
         // Получаем уникальные жанры для выпадающего списка фильтра
         $genres = Book::select('genre')->distinct()->orderBy('genre')->pluck('genre');

@@ -25,7 +25,6 @@
 
                     <h4>Управление</h4>
                     <ul>
-                        <li><a href="{{ route('admin.books.index') }}">Управление книгами</a></li>
                         <li><a href="{{ route('admin.users.index') }}">Управление пользователями</a></li>
                         <li><a href="{{ route('admin.reports.index') }}">Отчеты</a></li>
                     </ul>
