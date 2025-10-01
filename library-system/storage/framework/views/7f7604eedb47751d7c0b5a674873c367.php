@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -7,6 +5,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Выдача книги</span>
+                    <a href="<?php echo e(route('admin.dashboard')); ?>" class="btn btn-secondary btn-sm">Назад</a>
                 </div>
 
                 <div class="card-body">

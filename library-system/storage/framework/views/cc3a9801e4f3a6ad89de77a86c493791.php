@@ -79,7 +79,7 @@
 
                         <!-- Пагинация -->
                         <div class="d-flex justify-content-center">
-                            <?php echo e($books->links()); ?>
+                            <?php echo e($books->links('pagination::bootstrap-5')); ?>
 
                         </div>
                     <?php endif; ?>

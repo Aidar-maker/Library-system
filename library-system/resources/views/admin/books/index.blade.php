@@ -57,7 +57,7 @@
                         </tbody>
                     </table>
 
-                    {{ $books->links() }} <!-- Пагинация -->
+                    {{ $books->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>

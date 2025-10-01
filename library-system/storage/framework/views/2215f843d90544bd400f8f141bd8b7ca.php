@@ -24,31 +24,44 @@
                     </div>
 
                     <!-- Последние добавленные книги -->
-                    <?php if(isset($latestBooks) && $latestBooks->count() > 0): ?>
-                        <h4>Новые поступления</h4>
-                        <div class="row">
-                            <?php $__currentLoopData = $latestBooks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card h-100">
+                   <?php if($latestBooks && $latestBooks->count() > 0): ?>
+                    <h4>Новые поступления</h4>
+                    <div class="row">
+                        <?php $__currentLoopData = $latestBooks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="col-md-4 mb-4 col-sm-3">
+                                <a href="<?php echo e(route('books.show', $book)); ?>" >
+                                <div class="card h-100 shadow-sm border-0">
+                                    <!-- Карточка обложки -->
+                                    <div class="position-relative" style="max-height: 450px; max-width: 330px">
+                                        <!-- Фоновое изображение -->
                                         <?php if($book->cover_url): ?>
-                                            <img src="<?php echo e($book->cover_url); ?>" class="card-img-top" alt="<?php echo e($book->title); ?>" style="height: 200px; object-fit: cover;">
+                                            <img src="<?php echo e($book->cover_url); ?>" class="w-100 h-100 object-cover" alt="<?php echo e($book->title); ?>">
                                         <?php else: ?>
-                                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
-                                                <span class="text-muted">Обложка отсутствует</span>
+                                            <!-- Заглушка -->
+                                            <div class="w-100 h-100 bg-secondary d-flex align-items-center justify-content-center">
+                                                <span class="text-light">Обложка отсутствует</span>
                                             </div>
                                         <?php endif; ?>
-                                        <div class="card-body d-flex flex-column">
-                                            <h6 class="card-title"><?php echo e($book->title); ?></h6>
-                                            <p class="card-text"><small class="text-muted"><?php echo e($book->author); ?></small></p>
-                                            <a href="<?php echo e(route('books.show', $book)); ?>" class="btn btn-primary mt-auto btn-sm">Подробнее</a>
+
+                                        <!-- Текстовые слои (автор, название) -->
+                                        <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 text-white">
+                                            <h6 class="card-title fw-bold"><?php echo e($book->title); ?></h6>
+                                            <p class="card-text small"><?php echo e($book->author); ?></p>
                                         </div>
                                     </div>
+
+                                    <!-- Тело карточки -->
+                                    <div class="card-body d-flex flex-column">
+                                        <a href="<?php echo e(route('books.show', $book)); ?>" class="p btn btn-primary mt-auto">Подробнее</a>
+                                    </div>
                                 </div>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </div>
-                    <?php else: ?>
-                        <p class="text-center">Нет новых поступлений.</p>
-                    <?php endif; ?>
+                                </a>
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                <?php else: ?>
+                    <p class="text-center">Нет новых поступлений.</p>
+                <?php endif; ?>
                 </div>
             </div>
         </div>

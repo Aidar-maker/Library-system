@@ -23,7 +23,6 @@
 
                     <h4>Управление</h4>
                     <ul>
-                        <li><a href="<?php echo e(route('admin.books.index')); ?>">Управление книгами</a></li>
                         <li><a href="<?php echo e(route('admin.users.index')); ?>">Управление пользователями</a></li>
                         <li><a href="<?php echo e(route('admin.reports.index')); ?>">Отчеты</a></li>
                     </ul>

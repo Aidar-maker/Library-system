@@ -48,6 +48,6 @@ class BookService
         }
 
         // Возвращаем пагинированный результат
-        return $query->paginate(10)->appends($request->query());
+        return $query->paginate(12)->appends($request->query());
     }
 }

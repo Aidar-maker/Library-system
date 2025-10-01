@@ -1,3 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './darkly.css';
+
+/* Стили для карточки обложки */
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+
+/* Стили для текста на обложке */
+.bg-opacity-75 {
+    background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.fw-bold {
+    font-weight: 700 !important;
+}
+
+.small {
+    font-size: 0.875rem !important;
+}
+.p{
+    text-decoration: none;
+}

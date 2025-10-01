@@ -26,31 +26,44 @@
                     </div>
 
                     <!-- Последние добавленные книги -->
-                    @if(isset($latestBooks) && $latestBooks->count() > 0)
-                        <h4>Новые поступления</h4>
-                        <div class="row">
-                            @foreach($latestBooks as $book)
-                                <div class="col-md-4 mb-3">
-                                    <div class="card h-100">
+                   @if($latestBooks && $latestBooks->count() > 0)
+                    <h4>Новые поступления</h4>
+                    <div class="row">
+                        @foreach($latestBooks as $book)
+                            <div class="col-md-4 mb-4 col-sm-3">
+                                <a href="{{ route('books.show', $book) }}" >
+                                <div class="card h-100 shadow-sm border-0">
+                                    <!-- Карточка обложки -->
+                                    <div class="position-relative" style="max-height: 450px; max-width: 330px">
+                                        <!-- Фоновое изображение -->
                                         @if($book->cover_url)
-                                            <img src="{{ $book->cover_url }}" class="card-img-top" alt="{{ $book->title }}" style="height: 200px; object-fit: cover;">
+                                            <img src="{{ $book->cover_url }}" class="w-100 h-100 object-cover" alt="{{ $book->title }}">
                                         @else
-                                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
-                                                <span class="text-muted">Обложка отсутствует</span>
+                                            <!-- Заглушка -->
+                                            <div class="w-100 h-100 bg-secondary d-flex align-items-center justify-content-center">
+                                                <span class="text-light">Обложка отсутствует</span>
                                             </div>
                                         @endif
-                                        <div class="card-body d-flex flex-column">
-                                            <h6 class="card-title">{{ $book->title }}</h6>
-                                            <p class="card-text"><small class="text-muted">{{ $book->author }}</small></p>
-                                            <a href="{{ route('books.show', $book) }}" class="btn btn-primary mt-auto btn-sm">Подробнее</a>
+
+                                        <!-- Текстовые слои (автор, название) -->
+                                        <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 text-white">
+                                            <h6 class="card-title fw-bold">{{ $book->title }}</h6>
+                                            <p class="card-text small">{{ $book->author }}</p>
                                         </div>
                                     </div>
+
+                                    <!-- Тело карточки -->
+                                    <div class="card-body d-flex flex-column">
+                                        <a href="{{ route('books.show', $book) }}" class="p btn btn-primary mt-auto">Подробнее</a>
+                                    </div>
                                 </div>
-                            @endforeach
-                        </div>
-                    @else
-                        <p class="text-center">Нет новых поступлений.</p>
-                    @endif
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <p class="text-center">Нет новых поступлений.</p>
+                @endif
                 </div>
             </div>
         </div>
