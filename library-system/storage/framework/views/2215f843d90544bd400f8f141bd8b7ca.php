@@ -24,7 +24,7 @@
                     </div>
 
                     <!-- Последние добавленные книги -->
-                   <?php if($latestBooks && $latestBooks->count() > 1): ?>
+                   <?php if($latestBooks && $latestBooks->count() > 0): ?>
                     <h4>Новые поступления</h4>
                     <div class="row">
                         <?php $__currentLoopData = $latestBooks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

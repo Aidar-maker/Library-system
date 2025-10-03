@@ -32,16 +32,20 @@
                         @foreach($latestBooks as $book)
                             <div class="col-md-4 mb-4 col-sm-3">
                                 <a href="{{ route('books.show', $book) }}" >
-                                <div class="card h-100 shadow-sm border-0"></div>
-                                    <div class="position-relative" style="max-height: 450px; max-width: 330px"></div>
+                                <div class="card h-100 shadow-sm border-0">
+                                    <!-- Карточка обложки -->
+                                    <div class="position-relative" style="max-height: 450px; max-width: 330px">
+                                        <!-- Фоновое изображение -->
                                         @if($book->cover_url)
                                             <img src="{{ $book->cover_url }}" class="w-100 h-100 object-cover" alt="{{ $book->title }}">
                                         @else
+                                            <!-- Заглушка -->
                                             <div class="w-100 h-100 bg-secondary d-flex align-items-center justify-content-center">
                                                 <span class="text-light">Обложка отсутствует</span>
                                             </div>
                                         @endif
 
+                                        <!-- Текстовые слои (автор, название) -->
                                         <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-75 text-white">
                                             <h6 class="card-title fw-bold">{{ $book->title }}</h6>
                                             <p class="card-text small">{{ $book->author }}</p>
