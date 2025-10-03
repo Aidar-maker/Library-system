@@ -1,5 +1,6 @@
 @import './darkly.css';
 
+
 /* Стили для карточки обложки */
 .card {
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -23,5 +24,8 @@
     font-size: 0.875rem !important;
 }
 .p{
+    text-decoration: none;
+}
+a{
     text-decoration: none;
 }

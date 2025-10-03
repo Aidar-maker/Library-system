@@ -38,7 +38,7 @@
                         <!-- Фильтр по году "до" -->
                         <input type="number" name="year_to" class="form-control form-control-sm" placeholder="Год до" min="1000" max="<?php echo e(date('Y')); ?>" value="<?php echo e(request('year_to')); ?>" style="width: 100px;">
 
-                        <button class="btn btn-outline-secondary btn-sm" type="submit">Применить</button>
+                        <button class="btn btn-outline-success btn-sm" type="submit">Применить</button>
                         <!-- Кнопка сброса фильтров -->
                         <a href="<?php echo e(route('books.index')); ?>" class="btn btn-outline-warning btn-sm">Сбросить</a>
                     </form>

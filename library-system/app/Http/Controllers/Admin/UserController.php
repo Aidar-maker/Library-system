@@ -70,15 +70,15 @@ class UserController extends Controller
      */
     public function destroy(Request $request, User $user): RedirectResponse
     {
-        // Получаем текущего аутентифицированного пользователя из запроса
+        //получаем текущего зарегестрированного пользователя из запроса
         $currentUser = $request->user();
 
-        // Проверка, чтобы админ не мог удалить самого себя
+        //админ не может удалить самого себя
         if ($user->id === $currentUser->id) {
             return redirect()->route('admin.users.index')->with('error', 'Вы не можете удалить самого себя.');
         }
 
-        // TODO: Добавить проверку, можно ли удалять пользователя (например, если у него есть активные выдачи)
+        // TODO: Добавить проверку, можно ли удалять пользователя
         $user->delete();
 
         return redirect()->route('admin.users.index')->with('success', 'Пользователь успешно удален.');

@@ -9,7 +9,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Можно добавить статистику: количество книг, пользователей, активных выдач и т.д.
         $stats = [
             'total_books' => \App\Models\Book::count(),
             'total_users' => \App\Models\User::count(),

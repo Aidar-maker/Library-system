@@ -10,7 +10,7 @@ class SettingController extends Controller
 {
     public function index()
     {
-        $settings = Setting::all()->keyBy('key'); // Получаем все настройки, индексированные по ключу
+        $settings = Setting::all()->keyBy('key'); // Получаем все настройки
         return view('admin.settings.index', compact('settings'));
     }
 

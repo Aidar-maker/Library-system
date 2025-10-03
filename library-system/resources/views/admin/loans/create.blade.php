@@ -25,28 +25,29 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="user_id" class="form-label">Читатель *</label>
-                            <select name="user_id" id="user_id" class="form-control" required>
-                                <option value="">Выберите читателя</option>
-                                @foreach($users as $user)
-                                    <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
-                                        {{ $user->name }} ({{ $user->email }})
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <label for="user_id" class="form-label">Читатель *</label>
+                        <select name="user_id" id="user_id" class="form-control select2" required>
+                            <option value="">Выберите читателя</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                    {{ $user->name }} ({{ $user->email }})
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="book_id" class="form-label">Книга *</label>
-                            <select name="book_id" id="book_id" class="form-control" required>
-                                <option value="">Выберите книгу</option>
-                                @foreach($books as $book)
-                                    <option value="{{ $book->id }}" {{ old('book_id') == $book->id ? 'selected' : '' }}>
-                                        {{ $book->title }} - {{ $book->author }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <!-- Выбор книги -->
+                    <div class="mb-3">
+                        <label for="book_id" class="form-label">Книга *</label>
+                        <select name="book_id" id="book_id" class="form-control select2" required>
+                            <option value="">Выберите книгу</option>
+                            @foreach($books as $book)
+                                <option value="{{ $book->id }}" {{ old('book_id') == $book->id ? 'selected' : '' }}>
+                                    {{ $book->title }} - {{ $book->author }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
                         <div class="mb-3">
                             <label for="issued_at" class="form-label">Дата выдачи *</label>

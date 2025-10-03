@@ -19,19 +19,19 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        // Не возвращенные выдочи
+        //ее возвращенные выдочи
         $activeLoans = Loan::where('user_id', $user->id)
             ->whereNull('returned_at')
-            ->with('book') // Загружаем связанные книги
+            ->with('book') //загружаем книги пользователя
             ->get();
 
-        // Возвращенные выдачи
+        //Возвращенные выдачи
         $historyLoans = Loan::where('user_id', $user->id)
             ->whereNotNull('returned_at')
             ->with('book')
             ->get();
 
-        // Общая сумма штрафов
+        //Общая сумма штрафов
         $totalFine = $activeLoans->sum('fine_amount');
 
         return view('profile.index', compact('user', 'activeLoans', 'historyLoans', 'totalFine'));

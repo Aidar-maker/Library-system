@@ -17,6 +17,17 @@
                         </div>
                     @endif
 
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-md-8">
+                            <form action="{{ route('admin.books.index') }}" method="GET">
+                                <div class="input-group">
+                                    <input type="text" name="search" class="form-control" placeholder="Поиск книг по названию или автору..." value="{{ request('search') }}">
+                                    <button class="btn btn-outline-primary" type="submit">Найти</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -56,7 +67,7 @@
                             @endforelse
                         </tbody>
                     </table>
-
+                    </div>
                     {{ $books->links('pagination::bootstrap-5') }}
                 </div>
             </div>

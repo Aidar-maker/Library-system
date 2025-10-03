@@ -16,6 +16,17 @@
                         </div>
                     <?php endif; ?>
 
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-md-8">
+                            <form action="<?php echo e(route('admin.books.index')); ?>" method="GET">
+                                <div class="input-group">
+                                    <input type="text" name="search" class="form-control" placeholder="Поиск книг по названию или автору..." value="<?php echo e(request('search')); ?>">
+                                    <button class="btn btn-outline-primary" type="submit">Найти</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -55,7 +66,7 @@
                             <?php endif; ?>
                         </tbody>
                     </table>
-
+                    </div>
                     <?php echo e($books->links('pagination::bootstrap-5')); ?>
 
                 </div>

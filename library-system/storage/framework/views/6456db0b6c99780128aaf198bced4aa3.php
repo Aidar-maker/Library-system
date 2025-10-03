@@ -68,18 +68,6 @@
                                     <?php echo e(__('Управление книгами')); ?>
 
                                 </a>
-                                <a class="dropdown-item" href="<?php echo e(route('admin.users.index')); ?>">
-                                    <?php echo e(__('Управление пользователями')); ?>
-
-                                </a>
-                                <a class="dropdown-item" href="<?php echo e(route('admin.reports.index')); ?>">
-                                    <?php echo e(__('Отчеты')); ?>
-
-                                </a>
-                                <a class="dropdown-item" href="<?php echo e(route('admin.settings.index')); ?>">
-                                    <?php echo e(__('Настройки системы')); ?>
-
-                                </a>
                                 <a class="dropdown-item" href="<?php echo e(route('admin.loans.create')); ?>">
                                     <?php echo e(__('Выдача книги')); ?>
 

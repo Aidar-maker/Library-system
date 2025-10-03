@@ -21,7 +21,7 @@ class BookController extends Controller
     {
         $books = $this->bookService->getFilteredBooks($request);
 
-        // Получаем уникальные жанры для выпадающего списка фильтра
+        //уникальные жанры для выпадающего списка фильтра
         $genres = Book::select('genre')->distinct()->orderBy('genre')->pluck('genre');
 
         return view('books.index', compact('books', 'genres'));

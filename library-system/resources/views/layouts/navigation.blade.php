@@ -64,15 +64,6 @@
                                 <a class="dropdown-item" href="{{ route('admin.books.index') }}">
                                     {{ __('Управление книгами') }}
                                 </a>
-                                <a class="dropdown-item" href="{{ route('admin.users.index') }}">
-                                    {{ __('Управление пользователями') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('admin.reports.index') }}">
-                                    {{ __('Отчеты') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('admin.settings.index') }}">
-                                    {{ __('Настройки системы') }}
-                                </a>
                                 <a class="dropdown-item" href="{{ route('admin.loans.create') }}">
                                     {{ __('Выдача книги') }}
                                 </a>

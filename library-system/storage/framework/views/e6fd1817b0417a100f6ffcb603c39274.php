@@ -12,6 +12,7 @@
                     <?php if($popularBooks->isEmpty()): ?>
                         <p>Нет данных для отчета.</p>
                     <?php else: ?>
+                    <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -32,6 +33,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
+                    </div>
                     <?php endif; ?>
                 </div>
             </div>

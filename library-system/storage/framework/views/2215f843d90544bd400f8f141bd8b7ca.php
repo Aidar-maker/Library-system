@@ -24,7 +24,7 @@
                     </div>
 
                     <!-- Последние добавленные книги -->
-                   <?php if($latestBooks && $latestBooks->count() > 0): ?>
+                   <?php if($latestBooks && $latestBooks->count() > 1): ?>
                     <h4>Новые поступления</h4>
                     <div class="row">
                         <?php $__currentLoopData = $latestBooks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -50,10 +50,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Тело карточки -->
-                                    <div class="card-body d-flex flex-column">
-                                        <a href="<?php echo e(route('books.show', $book)); ?>" class="p btn btn-primary mt-auto">Подробнее</a>
-                                    </div>
                                 </div>
                                 </a>
                             </div>

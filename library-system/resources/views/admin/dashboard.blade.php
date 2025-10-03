@@ -27,6 +27,7 @@
                     <ul>
                         <li><a href="{{ route('admin.users.index') }}">Управление пользователями</a></li>
                         <li><a href="{{ route('admin.reports.index') }}">Отчеты</a></li>
+                        <li><a href="{{ route('admin.settings.index') }}">Настройка системы</a></li>
                     </ul>
                 </div>
             </div>

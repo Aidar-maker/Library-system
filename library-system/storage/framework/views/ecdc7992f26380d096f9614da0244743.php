@@ -19,41 +19,41 @@
 
                         </div>
                     <?php endif; ?>
-
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Имя</th>
-                                <th>Email</th>
-                                <th>Дата регистрации</th>
-                                <th>Действия</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
                                 <tr>
-                                    <td><?php echo e($user->id); ?></td>
-                                    <td><?php echo e($user->name); ?></td>
-                                    <td><?php echo e($user->email); ?></td>
-                                    <td><?php echo e($user->created_at->format('d.m.Y H:i')); ?></td>
-                                    <td>
-                                        <form action="<?php echo e(route('admin.users.destroy', $user)); ?>" method="POST" style="display:inline;">
-                                            <?php echo csrf_field(); ?>
-                                            <?php echo method_field('DELETE'); ?>
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Вы уверены, что хотите удалить этого пользователя? Это действие нельзя отменить.')">Удалить</button>
-                                        </form>
-                                    </td>
+                                    <th>ID</th>
+                                    <th>Имя</th>
+                                    <th>Email</th>
+                                    <th>Дата регистрации</th>
+                                    <th>Действия</th>
                                 </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                                <tr>
-                                    <td colspan="5" class="text-center">Пользователи не найдены</td>
-                                </tr>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
-
-                    <?php echo e($users->links()); ?> <!-- Пагинация -->
+                            </thead>
+                            <tbody>
+                                <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                    <tr>
+                                        <td><?php echo e($user->id); ?></td>
+                                        <td><?php echo e($user->name); ?></td>
+                                        <td><?php echo e($user->email); ?></td>
+                                        <td><?php echo e($user->created_at->format('d.m.Y H:i')); ?></td>
+                                        <td>
+                                            <form action="<?php echo e(route('admin.users.destroy', $user)); ?>" method="POST" style="display:inline;">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('DELETE'); ?>
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Вы уверены, что хотите удалить этого пользователя? Это действие нельзя отменить.')">Удалить</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                    <tr>
+                                        <td colspan="5" class="text-center">Пользователи не найдены</td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                        <?php echo e($users->links()); ?> <!-- Пагинация -->
+                    </div>
                 </div>
             </div>
         </div>

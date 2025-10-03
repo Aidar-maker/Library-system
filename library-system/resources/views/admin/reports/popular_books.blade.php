@@ -14,6 +14,7 @@
                     @if($popularBooks->isEmpty())
                         <p>Нет данных для отчета.</p>
                     @else
+                    <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -34,6 +35,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
                     @endif
                 </div>
             </div>

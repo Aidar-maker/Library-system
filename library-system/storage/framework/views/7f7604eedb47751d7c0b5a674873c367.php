@@ -23,29 +23,30 @@
                         <?php echo csrf_field(); ?>
 
                         <div class="mb-3">
-                            <label for="user_id" class="form-label">Читатель *</label>
-                            <select name="user_id" id="user_id" class="form-control" required>
-                                <option value="">Выберите читателя</option>
-                                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($user->id); ?>" <?php echo e(old('user_id') == $user->id ? 'selected' : ''); ?>>
-                                        <?php echo e($user->name); ?> (<?php echo e($user->email); ?>)
-                                    </option>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </select>
-                        </div>
+                        <label for="user_id" class="form-label">Читатель *</label>
+                        <select name="user_id" id="user_id" class="form-control select2" required>
+                            <option value="">Выберите читателя</option>
+                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($user->id); ?>" <?php echo e(old('user_id') == $user->id ? 'selected' : ''); ?>>
+                                    <?php echo e($user->name); ?> (<?php echo e($user->email); ?>)
+                                </option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="book_id" class="form-label">Книга *</label>
-                            <select name="book_id" id="book_id" class="form-control" required>
-                                <option value="">Выберите книгу</option>
-                                <?php $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($book->id); ?>" <?php echo e(old('book_id') == $book->id ? 'selected' : ''); ?>>
-                                        <?php echo e($book->title); ?> - <?php echo e($book->author); ?>
+                    <!-- Выбор книги -->
+                    <div class="mb-3">
+                        <label for="book_id" class="form-label">Книга *</label>
+                        <select name="book_id" id="book_id" class="form-control select2" required>
+                            <option value="">Выберите книгу</option>
+                            <?php $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($book->id); ?>" <?php echo e(old('book_id') == $book->id ? 'selected' : ''); ?>>
+                                    <?php echo e($book->title); ?> - <?php echo e($book->author); ?>
 
-                                    </option>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </select>
-                        </div>
+                                </option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                    </div>
 
                         <div class="mb-3">
                             <label for="issued_at" class="form-label">Дата выдачи *</label>

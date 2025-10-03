@@ -14,7 +14,7 @@ class LoanController extends Controller
     // Форма выдачи книги
     public function create()
     {
-        // Получаем всех пользователей кроме админов и доступные книги
+        //получаем всех пользователей кроме админов и доступные книги
         $users = User::where('is_admin', false)->get();
         $books = Book::where('is_available', true)->get();
 
@@ -59,7 +59,7 @@ class LoanController extends Controller
     // Страница выбора выдачи для возврата
     public function returnIndex()
     {
-        // Получаем все активные выдачи (не возвращены)
+        //активные выдачи
         $activeLoans = Loan::whereNull('returned_at')
             ->with(['user', 'book'])
             ->get();
@@ -67,19 +67,19 @@ class LoanController extends Controller
         return view('admin.loans.return_index', compact('activeLoans'));
     }
 
-    // обработка возврата
+    //возврат
     public function returnBook(Request $request, Loan $loan)
     {
-        // Проверка, что книга еще не возвращена
+        //проверка что книга еще не возвращена
         if ($loan->returned_at) {
             return redirect()->back()->with('error', 'Книга уже возвращена.');
         }
 
-        // Фиксируем дату возврата
+        //дата возврата
         $returnedAt = Carbon::now();
         $loan->returned_at = $returnedAt;
 
-        // расчет штрафа если есть просрочка
+        //расчет штрафа если есть просрочка
         $fineAmount = 0;
         if ($loan->due_at->isPast()) {
             $daysOverdue = $loan->due_at->diffInDays($returnedAt);
@@ -88,10 +88,10 @@ class LoanController extends Controller
         }
         $loan->fine_amount = $fineAmount;
 
-        // Сохраняем изменения в выдаче
+        //сохраняем изменения в выдаче
         $loan->save();
 
-        // Обновляем статус книги на "доступна"
+        //обновляем статус книги на "доступна"
         $loan->book->update(['is_available' => true]);
 
         return redirect()->route('admin.dashboard')->with('success', "Книга возвращена. Штраф: {$fineAmount} руб.");
