@@ -42,6 +42,7 @@ a{
 
 .card-footer {
     border-top: none;
+    border-radius: 5px;
 }
 
 .btn-primary {
@@ -72,4 +73,70 @@ a{
 
 .invalid-feedback {
     font-size: 0.875rem;
+}
+
+/* Стили для гостевых страниц */
+.bg-dark {
+    background-color: #212529 !important;
+}
+
+.text-gray-900 {
+    color: #f8f9fa !important;
+}
+
+.bg-white {
+    background-color: #343a40 !important;
+}
+
+.text-gray-500 {
+    color: #adb5bd !important;
+}
+
+.shadow-md {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem !important;
+}
+
+/*стиль для входа*/
+.form-control {
+    background-color: #495057;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+.form-control:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.btn-link {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    color: #0b5ed7;
+    text-decoration: underline;
+}
+
+.invalid-feedback {
+    font-size: 0.875rem;
+}
+
+.biblioteka{
+    padding-top: 10px;
 }

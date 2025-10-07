@@ -1,9 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
     <div class="container">
-        <!-- Логотип -->
-        <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="https://logo.svgcdn.com/s/builtbybit-dark-8x.png" alt="Logo" class="d-inline-block align-text-top me-2">
-        </a>
 
         <!-- Кнопка для мобильных устройств -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
