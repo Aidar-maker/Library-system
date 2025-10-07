@@ -2,7 +2,7 @@
     <div class="container">
         <!-- Логотип -->
         <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-            <img src="./logo.png" alt="Logo" class="d-inline-block align-text-top me-2">
+            <img src="https://logo.svgcdn.com/s/builtbybit-dark-8x.png" alt="Logo" class="d-inline-block align-text-top me-2">
         </a>
 
         <!-- Кнопка для мобильных устройств -->

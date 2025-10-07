@@ -13,11 +13,11 @@
             <div class="col-md-6">
                 <div class="card mt-5">
                     <div class="card-header bg-dark text-white">
-                        <h4>Вход в систему</h4>
+                        <h4>Регистрация</h4>
                     </div>
 
                     <div class="card-body">
-                        <form method="POST" action="<?php echo e(route('login')); ?>">
+                        <form method="POST" action="<?php echo e(route('register')); ?>">
                             <?php echo csrf_field(); ?>
 
                             <div class="mb-3">
@@ -29,7 +29,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="email" value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus>
+unset($__errorArgs, $__bag); ?>" name="email" value="<?php echo e(old('email')); ?>" required autocomplete="email">
                                 <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -45,6 +45,32 @@ unset($__errorArgs, $__bag); ?>
                             </div>
 
                             <div class="mb-3">
+                                <label for="name" class="form-label">Имя</label>
+                                <input id="name" type="text" class="form-control <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="name" value="<?php echo e(old('name')); ?>" required autocomplete="name" autofocus>
+                                <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+
+                            
+
+                            <div class="mb-3">
                                 <label for="password" class="form-label">Пароль</label>
                                 <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -53,7 +79,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="current-password">
+unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="new-password">
                                 <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -68,22 +94,20 @@ endif;
 unset($__errorArgs, $__bag); ?>
                             </div>
 
-                            <div class="mb-3 form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>
-                                <label class="form-check-label" for="remember">
-                                    Запомнить меня
-                                </label>
+                            <div class="mb-3">
+                                <label for="password-confirm" class="form-label">Подтверждение пароля</label>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
 
                             <div class="d-flex justify-content-between">
                                 <div class="card-footer bg-dark text-white">
                                     <p class="text-center mb-0">
-                                        Нет аккаунта? <a href="<?php echo e(route('register')); ?>" class="text-light">Зарегистрируйтесь</a>
+                                        Уже есть аккаунт? <a href="<?php echo e(route('login')); ?>" class="text-light">Войдите</a>
                                     </p>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">
-                                    Войти
+                                    Зарегистрироваться
                                 </button>
                             </div>
                         </form>
@@ -101,4 +125,4 @@ unset($__errorArgs, $__bag); ?>
 <?php if (isset($__componentOriginal69dc84650370d1d4dc1b42d016d7226b)): ?>
 <?php $component = $__componentOriginal69dc84650370d1d4dc1b42d016d7226b; ?>
 <?php unset($__componentOriginal69dc84650370d1d4dc1b42d016d7226b); ?>
-<?php endif; ?><?php /**PATH C:\Users\admin\Library-system\library-system\resources\views/auth/login.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH C:\Users\admin\Library-system\library-system\resources\views/auth/register.blade.php ENDPATH**/ ?>
