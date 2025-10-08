@@ -9,12 +9,12 @@
                     <span>Каталог книг</span>
                     <!-- Форма фильтрации -->
                     <form action="<?php echo e(route('books.index')); ?>" method="GET" class="d-flex flex-wrap gap-2">
-                        <!-- Поиск -->
+                        <!--поиск -->
                         <div class="input-group input-group-sm">
                             <input type="text" name="search" class="form-control form-control-sm" placeholder="Поиск..." value="<?php echo e(request('search')); ?>">
                         </div>
 
-                        <!-- Фильтр по жанру -->
+                        <!--фильтр по жанру -->
                         <select name="genre" class="form-select form-select-sm">
                             <option value="">Все жанры</option>
                             <?php $__currentLoopData = $genres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genreOption): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -25,21 +25,20 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
 
-                        <!-- Фильтр по статусу -->
+                        <!--фильтр по статусу -->
                         <select name="status" class="form-select form-select-sm">
                             <option value="">Все статусы</option>
                             <option value="available" <?php echo e(request('status') == 'available' ? 'selected' : ''); ?>>Доступна</option>
                             <option value="not_available" <?php echo e(request('status') == 'not_available' ? 'selected' : ''); ?>>Занята</option>
                         </select>
 
-                        <!-- Фильтр по году "от" -->
+                        <!--фильтр по году "от" -->
                         <input type="number" name="year_from" class="form-control form-control-sm" placeholder="Год от" min="1000" max="<?php echo e(date('Y')); ?>" value="<?php echo e(request('year_from')); ?>" style="width: 100px;">
 
-                        <!-- Фильтр по году "до" -->
+                        <!--фильтр по году "до" -->
                         <input type="number" name="year_to" class="form-control form-control-sm" placeholder="Год до" min="1000" max="<?php echo e(date('Y')); ?>" value="<?php echo e(request('year_to')); ?>" style="width: 100px;">
 
                         <button class="btn btn-outline-success btn-sm" type="submit">Применить</button>
-                        <!-- Кнопка сброса фильтров -->
                         <a href="<?php echo e(route('books.index')); ?>" class="btn btn-outline-warning btn-sm">Сбросить</a>
                     </form>
                 </div>
@@ -77,7 +76,7 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
 
-                        <!-- Пагинация -->
+                        <!--пагинация-->
                         <div class="d-flex justify-content-center">
                             <?php echo e($books->links('pagination::bootstrap-5')); ?>
 

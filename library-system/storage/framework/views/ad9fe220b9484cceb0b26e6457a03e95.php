@@ -68,13 +68,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                             </div>
 
-                            <div class="mb-3 form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>
-                                <label class="form-check-label" for="remember">
-                                    Запомнить меня
-                                </label>
-                            </div>
-
                             <div class="d-flex justify-content-between">
                                 <div class="card-footer bg-dark text-white">
                                     <p class="text-center mb-0">

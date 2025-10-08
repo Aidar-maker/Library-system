@@ -32,6 +32,7 @@
             <main>
                 <?php echo $__env->yieldContent('content'); ?>
             </main>
+
         </div>
     </body>
 </html>

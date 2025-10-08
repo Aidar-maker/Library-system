@@ -25,5 +25,8 @@
 
         </div>
     </div>
+
+    <!-- Footer -->
+    <?php echo $__env->make('layouts.partials.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 </body>
 </html><?php /**PATH C:\Users\admin\Library-system\library-system\resources\views/layouts/guest.blade.php ENDPATH**/ ?>
