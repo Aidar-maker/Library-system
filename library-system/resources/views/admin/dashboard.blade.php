@@ -8,7 +8,7 @@
                 <div class="card-header">Админ-панель</div>
 
                 <div class="card-body">
-                    <h4>Статистика</h4>
+                    <h4>Статистика</h4><!-- Статистика сайта -->
                     <ul class="list-group">
                         <li class="list-group-item">
                             Всего книг: <strong>{{ $stats['total_books'] }}</strong>
@@ -24,7 +24,7 @@
                     <hr>
 
                     <h4>Управление</h4>
-                    <ul>
+                    <ul><!-- Функции админа -->
                         <li><a href="{{ route('admin.users.index') }}">Управление пользователями</a></li>
                         <li><a href="{{ route('admin.reports.index') }}">Отчеты</a></li>
                         <li><a href="{{ route('admin.settings.index') }}">Настройка системы</a></li>

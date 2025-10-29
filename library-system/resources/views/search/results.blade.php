@@ -11,7 +11,7 @@
                     @if($books->isEmpty())
                         <p>Книги не найдены.</p>
                     @else
-                        <ul class="list-group">
+                        <ul class="list-group"><!-- Поиск нужной книги -->
                             @foreach($books as $book)
                                 <li class="list-group-item">
                                     <strong>{{ $book->title }}</strong> — {{ $book->author }}

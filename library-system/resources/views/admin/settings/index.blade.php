@@ -16,7 +16,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('admin.settings.update') }}">
+                    <form method="POST" action="{{ route('admin.settings.update') }}"><!-- Редактирование настроек системы -->
                         @csrf
                         @method('PUT')
 

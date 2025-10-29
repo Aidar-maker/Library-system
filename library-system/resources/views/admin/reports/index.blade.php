@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Отчеты</div>
 
-                <div class="card-body">
+                <div class="card-body"><!-- Ссылки на отчеты -->
                     <ul>
                         <li><a href="{{ route('admin.reports.popular_books') }}">ТОП-10 популярных книг</a></li>
                         <li><a href="{{ route('admin.reports.debtors') }}">Список должников</a></li>

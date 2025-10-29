@@ -18,11 +18,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Маршруты для аутентификации
 require __DIR__.'/auth.php';
 
-// Маршруты для авторизованных
+// Маршруты для авторизованных пользователей
 Route::middleware(['auth'])->group(function () {
     // Личный кабинет читателя
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/search', [HomeController::class, 'search'])->name('home.search');
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');

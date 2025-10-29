@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Личный кабинет</div>
 
-                <div class="card-body">
+                <div class="card-body"><!-- Сессия для авторизованного пользователя -->
                     @if(session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
@@ -20,17 +20,17 @@
                         <li class="list-group-item"><strong>Email:</strong> {{ $user->email }}</li>
                         <li class="list-group-item"><strong>Телефон:</strong> {{ $user->phone ?? 'Не указан' }}</li>
                         <li class="list-group-item"><strong>Адрес:</strong> {{ $user->address ?? 'Не указан' }}</li>
-                        <!-- Если в будущем добавятся телефон и адрес, их можно будет сюда добавить -->
                     </ul>
+                    <!-- Ссылка на редактирование профиля -->
                     <a href="{{ route('profile.edit') }}" class="btn btn-outline-success">Редактирование профиля</a>
-                     @if(Auth::check() && !Auth::user()->is_admin)
+                     @if(Auth::check() && !Auth::user()->is_admin) <!-- Если админ -> не показываем -->
                         <h4>Мои штрафы</h4>
                         <p>Общая сумма штрафов: <strong>{{ number_format($totalFine, 2, ',', ' ') }} руб.</strong></p>
 
                         <hr>
 
                         <h4>Активные выдачи</h4>
-                        @if($activeLoans->isEmpty())
+                        @if($activeLoans->isEmpty())<!-- Показ активных выдач -->
                             <p>У вас нет активных выдач.</p>
                         @else
                             <div class="table-responsive">
@@ -51,7 +51,7 @@
                                                 <td>{{ $loan->issued_at->format('d.m.Y') }}</td>
                                                 <td>{{ $loan->due_at->format('d.m.Y') }}</td>
                                                 <td>
-                                                    @if($loan->due_at->isPast())
+                                                    @if($loan->due_at->isPast())<!-- Проверка просрочки -->
                                                         <span class="text-danger">{{ $loan->due_at->diffInDays(now()) }} дней просрочки</span>
                                                     @else
                                                         {{ $loan->due_at->diffInDays(now()) }} дней
@@ -68,7 +68,7 @@
                         <hr>
 
                         <h4>История выдач</h4>
-                        @if($historyLoans->isEmpty())
+                        @if($historyLoans->isEmpty())<!-- История выдач пользователя -->
                             <p>У вас нет истории выдач.</p>
                         @else
                             <div class="table-responsive">

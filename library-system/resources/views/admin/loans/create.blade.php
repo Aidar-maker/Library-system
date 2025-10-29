@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                     @endif
-
+                    <!-- Выбор пользователя -->
                     <form method="POST" action="{{ route('admin.loans.store') }}">
                         @csrf
 

@@ -17,7 +17,7 @@
                             @endif
                         </div>
                         <div class="col-md-8">
-                            <h3>{{ $book->title }}</h3>
+                            <h3>{{ $book->title }}</h3><!-- Показ книг -->
                             <p><strong>Автор:</strong> {{ $book->author }}</p>
                             <p><strong>ISBN:</strong> {{ $book->isbn }}</p>
                             <p><strong>Год:</strong> {{ $book->year }}</p>
@@ -28,7 +28,7 @@
                     </div>
 
                     <hr>
-                    @if(Auth::check() && Auth::user()->is_admin)
+                    @if(Auth::check() && Auth::user()->is_admin)<!-- Ссылка на редактрование (для админа) -->
                         <a href="{{ route('admin.books.edit', $book) }}" class="btn btn-warning">Редактировать</a>
                         <a href="{{ route('admin.books.index') }}" class="btn btn-secondary">Назад</a>
                     @endif

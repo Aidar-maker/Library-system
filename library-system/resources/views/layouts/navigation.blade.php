@@ -68,7 +68,7 @@
                                 </a>
                             @endif
 
-                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-divider"></div><!-- Забыл для чего он, но и без него все работает -->
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                                 <button type="submit" class="dropdown-item">{{ __('Выход') }}</button>

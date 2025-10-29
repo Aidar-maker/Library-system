@@ -21,7 +21,7 @@
                     @endif
                     <div class="table-responsive">
                         <table class="table table-bordered">
-                            <thead>
+                            <thead><!-- Таблица -->
                                 <tr>
                                     <th>ID</th>
                                     <th>Имя</th>
@@ -38,7 +38,7 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->created_at->format('d.m.Y H:i') }}</td>
                                         <td>
-                                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST" style="display:inline;"><!-- Управление пользователями -->
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Вы уверены, что хотите удалить этого пользователя? Это действие нельзя отменить.')">Удалить</button>

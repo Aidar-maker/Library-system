@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 mb-3 mb-md-0">
-                            @if($book->cover_url)
+                            @if($book->cover_url)<!-- Проверка наличии обложки -->
                                 <img src="{{ $book->cover_url }}" alt="{{ $book->title }}" class="img-fluid rounded">
                             @else
                                 <div class="bg-light d-flex align-items-center justify-content-center" style="height: 300px;">
@@ -22,7 +22,7 @@
                             @endif
                         </div>
                         <div class="col-md-8">
-                            <h2>{{ $book->title }}</h2>
+                            <h2>{{ $book->title }}</h2><!-- Инфо о книги -->
                             <p class="lead">Автор: {{ $book->author }}</p>
                             <p><strong>ISBN:</strong> {{ $book->isbn }}</p>
                             <p><strong>Год издания:</strong> {{ $book->year }}</p>

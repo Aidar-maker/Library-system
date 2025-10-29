@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Редактирование профиля</div>
+                <div class="card-header">Редактирование профиля</div><!-- Форма редактирования профиля -->
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('profile.update') }}">
+                    <form method="POST" action="{{ route('profile.update') }}"><!-- Метод POST для отправки/редактирования в базу -->
                         @csrf
                         @method('PUT')
 

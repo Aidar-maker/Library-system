@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Возврат книги</span>
+                    <span>Возврат книги</span><!-- Возврат книг -->
                     <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary btn-sm">Назад</a>
                 </div>
 
@@ -39,7 +39,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($activeLoans as $loan)
+                                    @foreach($activeLoans as $loan)<!-- Показ всех выдач -->
                                         <tr>
                                             <td>{{ $loan->user->name ?? 'Неизвестный' }}</td>
                                             <td>{{ $loan->book->title ?? 'Неизвестная' }}</td>
